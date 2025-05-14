@@ -51,7 +51,7 @@ def analyze_results(idata, data):
     summary = az.summary(idata, var_names=var_names, hdi_prob=0.94)
     print(summary)
 
-    az.plot_pair(idata, var_names=var_names, kind='scatter', marginals=True, point_estimate='mean') 
+    az.plot_pair(idata, var_names=var_names, kind='kde', marginals=True, point_estimate='mean') 
     plt.gcf().suptitle(f"Pair Plot", y=1.02)
     plt.tight_layout()
     plt.savefig(FIG_DIR / "pair_plot.png")
@@ -94,7 +94,7 @@ def analyze_results(idata, data):
 
     comparison = majority_vote == Z_estimated
     agreement = np.mean(comparison) #comparing majority vote answer key to posterior consensus answer key
-    print('Percentage agreement between data and inference', agreement, '%')
+    print('Agreement between data and inference', agreement)
 
 #the whole thing
 
